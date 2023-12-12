@@ -18,10 +18,8 @@ function isImageFile(filename: string) {
 
 export const main: VocanaMainFunction<Props, Result, DefaultObject> = async (props, context) => {
   const dir = context.options.path;
-  await Promise.all(props.in.map(url => download(url, dir)));
-  const files = await fs.readdir(dir);
-  const dirs = files.filter(file => isImageFile(file)).map(file => {
-    return path.join(dir, file);
-  });
-  await context.result(dirs || "", "out", true);
+  const urls = props.in;
+  const fileNames = urls.map((url, i) => `${i}${path.extname(url)}`);
+  await Promise.all(props.in.map((url, i) => download(url, dir, { filename: fileNames[i] })));
+  await context.result(fileNames.map((fileName) => path.join(dir, fileName)), "out", true);
 };
