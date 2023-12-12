@@ -1,0 +1,16 @@
+props:
+  in:
+    optional: true
+    type: string
+options:
+  path:
+    schema:
+        type: "string"
+        "ui:widget": "dir"
+results:
+  out: {}
+entry:
+  bin: vocana-executor-node
+  envs: {}
+  args:
+    - ./index.ts

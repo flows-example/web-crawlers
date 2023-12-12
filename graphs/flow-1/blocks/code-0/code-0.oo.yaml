@@ -4,7 +4,10 @@ options:
     schema:
         type: "string"
 results:
-  out: {}
+  imageURLs:
+    type: array
+    items:
+      type: string
 entry:
   bin: vocana-executor-node
   envs: {}

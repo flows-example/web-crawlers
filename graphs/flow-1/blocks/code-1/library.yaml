@@ -1,0 +1,7 @@
+name: code-1
+version: 0.0.1
+namespace: flow-1
+block: ./code-1.oo.yaml
+preview:
+  out:
+    path: ./ui/dist/index.mjs

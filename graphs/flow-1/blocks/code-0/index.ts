@@ -1,33 +1,29 @@
 import type { VocanaMainFunction, DefaultObject } from "@vocana/sdk";
 import { CheerioCrawler, Dataset } from "crawlee";
 
-type Props = {
-  in: string;
-}
+type Props = {}
+type Options = {
+  url: string;
+};
 
 type Result = {
-  out: string;
+  imageURLs: string[];
 }
 
-export const main: VocanaMainFunction<Props, Result, DefaultObject> = async (props, context) => {
+export const main: VocanaMainFunction<Props, Result, Options> = async (props, context) => {
+  const url = context.options.url;
+  const imageURLs: string[] = [];
   const crawler = new CheerioCrawler({
       // Use the requestHandler to process each of the crawled pages.
-      async requestHandler({ request, $, enqueueLinks, log }) {
-          const title = $('title').text();
-          log.info(`Title of ${request.loadedUrl} is '${title}'`);
-
-          // Save results as JSON to ./storage/datasets/default
-          // await Dataset.pushData({ title, url: request.loadedUrl });
-
-          // Extract links from the current page
-          // and add them to the crawling queue.
-          await enqueueLinks();
+      async requestHandler({ page, request, $, enqueueLinks, log }) {          const title = $("title").text();
+          const selectedImages = $("amp-img").filter((_, el) => /^chapter\-img\-/.test(el.attribs["id"])).map((_, el) => el.attribs["src"]);
+          for (const imageURL of selectedImages) {
+            imageURLs.push(imageURL);
+          }
       },
-
       // Let's limit our crawls to make our tests shorter and safer.
       maxRequestsPerCrawl: 50,
   });
-  await crawler.run(["https://crawlee.dev"]);
-  // your code
-  await context.result(props.in || "", "out", true);
+  await crawler.run([url]);
+  context.result(imageURLs, "imageURLs", true);
 };
