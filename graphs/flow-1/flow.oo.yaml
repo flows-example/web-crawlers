@@ -1,0 +1,12 @@
+name: flow-1
+nodes:
+  code-0:
+    id: code-0
+    title: 章节内容
+    pos:
+      x: 104
+      'y': 195
+    options:
+      url: https://www.fzmanga.com/comic/chapter/yaoshenji-taxuedongman/0_0.html
+    block: ./blocks/code-0/code-0.oo.yaml
+edges: {}

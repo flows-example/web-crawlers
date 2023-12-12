@@ -1,0 +1,5 @@
+{
+	"dependencies": {
+		"@vocana/sdk": "^0.4.3"
+	}
+}

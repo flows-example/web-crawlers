@@ -1,0 +1,6 @@
+{
+  "name": "code-0",
+  "dependencies": {
+    "crawlee": "^3.6.2"
+  }
+}

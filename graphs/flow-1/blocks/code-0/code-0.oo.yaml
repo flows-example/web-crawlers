@@ -1,0 +1,12 @@
+props: {}
+options:
+  url:
+    schema:
+        type: "string"
+results:
+  out: {}
+entry:
+  bin: vocana-executor-node
+  envs: {}
+  args:
+    - ./index.ts
