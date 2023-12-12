@@ -1,8 +1,6 @@
-props: {}
-options:
+props:
   url:
-    schema:
-        type: "string"
+    type: string
 results:
   title:
     type: string

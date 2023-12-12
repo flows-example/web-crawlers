@@ -1,7 +1,7 @@
-name: code-0
+name: code-3
 version: 0.0.1
-namespace: articles
-block: ./code-0.oo.yaml
+namespace: flow-1
+block: ./code-3.oo.yaml
 preview:
   out:
     path: ./ui/dist/index.mjs

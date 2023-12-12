@@ -4,8 +4,8 @@ nodes:
     id: code-0
     title: 章节内容
     pos:
-      x: 130
-      'y': 104
+      x: 481
+      'y': 117
     options:
       url: https://www.fzmanga.com/comic/chapter/yaoshenji-taxuedongman/0_0.html
     block: ./blocks/code-0/code-0.oo.yaml
@@ -13,8 +13,8 @@ nodes:
     id: code-1
     title: 下载图片
     pos:
-      x: 546
-      'y': 104
+      x: 819
+      'y': 143
     options:
       path: /Users/taozeyu/codes/test/爬虫/漫画
     block: ./blocks/code-1/code-1.oo.yaml
@@ -22,12 +22,22 @@ nodes:
     id: code-2
     title: 合成 PDF
     pos:
-      x: 819
+      x: 1092
       'y': 156
     options:
       path: /Users/taozeyu/codes/test/爬虫/漫画PDF
       file_name: manga
     block: ./blocks/code-2/code-2.oo.yaml
+  code-3:
+    id: code-3
+    title: 章节爬取
+    pos:
+      x: 195
+      'y': 130
+    options:
+      maxResponse: 1
+      url: https://www.baozimh.com/comic/yaoshenji-taxuedongman
+    block: ./blocks/code-3/code-3.oo.yaml
 edges:
   edge-1:
     id: edge-1
@@ -61,3 +71,11 @@ edges:
     to:
       node_id: code-1
       key: imageURLs
+  edge-0:
+    id: edge-0
+    from:
+      node_id: code-3
+      key: capterURL
+    to:
+      node_id: code-0
+      key: url

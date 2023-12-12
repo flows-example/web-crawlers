@@ -1,18 +1,17 @@
 import type { VocanaMainFunction, DefaultObject } from "@vocana/sdk";
 import { CheerioCrawler, Dataset } from "crawlee";
 
-type Props = {}
-type Options = {
+type Props = {
   url: string;
-};
+}
 
 type Result = {
   title?: string;
   imageURLs: string[];
 }
 
-export const main: VocanaMainFunction<Props, Result, Options> = async (props, context) => {
-  const url = context.options.url;
+export const main: VocanaMainFunction<Props, Result> = async (props, context) => {
+  const url = props.url;
   const imageURLs: string[] = [];
   let mangaTitle: string | undefined;
   const crawler = new CheerioCrawler({

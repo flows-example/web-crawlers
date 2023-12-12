@@ -28,7 +28,7 @@ export const main: VocanaMainFunction<Props, Result, Options> = async (props, co
   });
   await crawler.run([url]);
 
-  capterURLs.splice(5);
+  capterURLs.splice(context.options.maxResponse);
 
   for (const url of capterURLs) {
     context.result(url, "capterURL", false);
