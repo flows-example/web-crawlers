@@ -4,11 +4,11 @@ import { CheerioCrawler, Dataset } from "crawlee";
 type Props = {}
 type Options = {
   url: string;
-  maxResponse: number;
+  maxResponse?: number;
 };
 
 type Result = {
-  capterURL: string;
+  capterURLs: string[];
 }
 
 export const main: VocanaMainFunction<Props, Result, Options> = async (props, context) => {
@@ -28,10 +28,8 @@ export const main: VocanaMainFunction<Props, Result, Options> = async (props, co
   });
   await crawler.run([url]);
 
-  capterURLs.splice(context.options.maxResponse);
-
-  for (const url of capterURLs) {
-    context.result(url, "capterURL", false);
+  if (typeof context.options.maxResponse === "number") {
+    capterURLs.splice(context.options.maxResponse);
   }
-  await context.done();
+  await context.result(capterURLs, "capterURLs", true);
 };

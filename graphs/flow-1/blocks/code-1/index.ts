@@ -1,14 +1,17 @@
 import type { VocanaMainFunction } from "@vocana/sdk";
 import download from "download";
-import fs from "fs/promises";
 import path from "path";
 
 type Props = {
-  imageURLs: string[];
+  page: {
+    title?: string;
+    imageURLs: string[];
+  };
 }
 
 type Result = {
-  imagePathes: string[];
+  title: string;
+  imagePaths: string[];
 }
 
 type Options = {
@@ -16,8 +19,23 @@ type Options = {
 };
 
 export const main: VocanaMainFunction<Props, Result, Options> = async (props, context) => {
-  const dir = context.options.path;
-  const fileNames = props.imageURLs.map((url, i) => `${i}${path.extname(url)}`);
-  await Promise.all(props.imageURLs.map((url, i) => download(url, dir, { filename: fileNames[i] })));
-  await context.result(fileNames.map((fileName) => path.join(dir, fileName)), "imagePathes", true);
+  const random = `${Math.ceil(Math.random() * 100000)}`;
+  const title = `${props.page.title ?? "default"}_${random}`;
+  const dir = path.join(context.options.path, title);
+
+  const fileNames = props.page.imageURLs.map((url, i) => `${i}${path.extname(url)}`);
+  const successList = await Promise.all(props.page.imageURLs.map(async (url, i) => {
+    try {
+      await download(url, dir, { filename: fileNames[i] });
+      return true;
+    } catch (error) {
+      console.log("[Download]", url, "failed");
+      console.error(error);
+      return false;
+    }
+  }));
+  const imagePaths = fileNames.filter((_, i) => successList[i])
+                              .map((fileName) => path.join(dir, fileName));
+  await context.result(imagePaths, "imagePaths", false);
+  await context.result(title, "title", true);
 };

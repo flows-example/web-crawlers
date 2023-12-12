@@ -1,7 +1,6 @@
 props:
   title:
     type: string
-    optional: true
   imagePathes:
     type: array
     items:

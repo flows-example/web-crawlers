@@ -4,7 +4,7 @@ import sizeOf from "image-size";
 import fs from "fs";
 
 type Props = {
-  title?: string;
+  title: string;
   imagePathes: string[];
 }
 
@@ -48,9 +48,8 @@ const generatePdf = async (imageUrls: string[]): Promise<jsPDF> => {
   return doc;
 }
 export const main: VocanaMainFunction<Props, Result, Options> = async (props, context) => {
-  // your code
   const pdf = await generatePdf(props.imagePathes);
-  const fileName = props.title ?? "default";
+  const fileName = props.title;
   pdf.save(`${context.options.path}/${fileName}.pdf`);
   await context.done();
 };

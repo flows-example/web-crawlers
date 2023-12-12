@@ -1,15 +1,23 @@
 props:
-  imageURLs:
-    type: array
-    items:
-      type: string
+  page:
+    type: object
+    required: [imageURLs]
+    properties:
+      title:
+        type: string
+      imageURLs:
+        type: array
+        items:
+          type: string
 options:
   path:
     schema:
         type: "string"
         "ui:widget": "dir"
 results:
-  imagePathes:
+  title:
+    type: string
+  imagePaths:
     type: array
     items:
       type: string

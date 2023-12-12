@@ -1,14 +1,18 @@
 props:
-  url:
-    type: string
-results:
-  title:
-    type: string
-    optional: true
-  imageURLs:
+  capterURLs:
     type: array
-    items:
-      type: string
+    items: string
+results:
+  page:
+    type: object
+    required: [imageURLs]
+    properties:
+      title:
+        type: string
+      imageURLs:
+        type: array
+        items:
+          type: string
 entry:
   bin: vocana-executor-node
   envs: {}
