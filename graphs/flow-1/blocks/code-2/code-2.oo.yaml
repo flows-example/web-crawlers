@@ -1,10 +1,12 @@
 props:
-  in:
+  title:
+    type: string
     optional: true
-options:
-  file_name:
-    schema:
+  imagePathes:
+    type: array
+    items:
       type: string
+options:
   path:
     schema:
         type: "string"  

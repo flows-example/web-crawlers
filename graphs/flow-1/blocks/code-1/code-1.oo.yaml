@@ -1,14 +1,18 @@
 props:
-  in:
-    optional: true
-    type: string
+  imageURLs:
+    type: array
+    items:
+      type: string
 options:
   path:
     schema:
         type: "string"
         "ui:widget": "dir"
 results:
-  out: {}
+  imagePathes:
+    type: array
+    items:
+      type: string
 entry:
   bin: vocana-executor-node
   envs: {}

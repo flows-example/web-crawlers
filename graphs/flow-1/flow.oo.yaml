@@ -22,8 +22,8 @@ nodes:
     id: code-2
     title: 合成 PDF
     pos:
-      x: 676
-      'y': 169
+      x: 702
+      'y': 156
     options:
       path: /Users/taozeyu/codes/test/爬虫/漫画PDF
       file_name: manga
@@ -45,3 +45,27 @@ edges:
     to:
       node_id: code-2
       key: in
+  edge-3:
+    id: edge-3
+    from:
+      node_id: code-0
+      key: imageURLs
+    to:
+      node_id: code-1
+      key: imageURLs
+  edge-2:
+    id: edge-2
+    from:
+      node_id: code-0
+      key: title
+    to:
+      node_id: code-2
+      key: title
+  edge-4:
+    id: edge-4
+    from:
+      node_id: code-1
+      key: imagePathes
+    to:
+      node_id: code-2
+      key: imagePathes

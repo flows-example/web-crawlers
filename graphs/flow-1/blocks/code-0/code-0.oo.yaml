@@ -4,6 +4,9 @@ options:
     schema:
         type: "string"
 results:
+  title:
+    type: string
+    optional: true
   imageURLs:
     type: array
     items:
