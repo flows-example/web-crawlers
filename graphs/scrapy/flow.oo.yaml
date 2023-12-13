@@ -1,0 +1,13 @@
+name: scrapy
+nodes:
+  code-0:
+    id: code-0
+    title: 章节爬取
+    pos:
+      x: 117
+      'y': 247
+    options:
+      url: https://www.baozimh.com/comic/yaoshenji-taxuedongman
+      maxResponse: 5
+    block: ./blocks/code-0/code-0.oo.yaml
+edges: {}
