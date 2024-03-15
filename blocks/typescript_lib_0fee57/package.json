@@ -1,0 +1,9 @@
+{
+  "name":"typescript_lib_0fee57",
+  "dependencies": {
+    "download": "^8.0.0"
+  },
+  "devDependencies": {
+    "@types/download": "^8.0.5"
+  }
+}

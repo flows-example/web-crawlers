@@ -1,0 +1,23 @@
+type: task_block
+title: typescript_lib_5c78a6
+executor:
+  name: node_executor
+  entry: ./index.ts
+inputs_def:
+  - handle: capterURLs
+    schema:
+      type: array
+      items:
+        type: string
+outputs_def:
+  - handle: page
+    schema:
+      type: object
+      required: [imageURLs]
+      properties:
+        title:
+          type: string
+        imageURLs:
+          type: array
+          items:
+            type: string

@@ -1,0 +1,89 @@
+nodes:
+  - task: ../../blocks/typescript_lib_5c78a6/block.oo.yaml
+    node_id: 78a6438d-062d-4aa1-a024-d7ad5ec38a0d
+    inputs_from:
+      [
+        {
+            handle: capterURLs,
+            trigger: null,
+            cache: { initial_value: [] },
+            from_flow: null,
+            from_node: [ { node_id: 1a1acdf6-ce7e-4077-b5d8-0c33aa7dbfd2, output_handle: capterURLs } ],
+            from_slot: null
+          }
+      ]
+    title: 章节内容
+  - task: ../../blocks/typescript_lib_d11a1a/block.oo.yaml
+    node_id: 1a1acdf6-ce7e-4077-b5d8-0c33aa7dbfd2
+    inputs_from:
+      [
+        {
+            handle: url,
+            trigger: null,
+            cache: { initial_value: https://www.baozimh.com/comic/yaoshenji-taxuedongman },
+            from_flow: null,
+            from_node: null,
+            from_slot: null
+          },
+        {
+            handle: maxResponse,
+            trigger: null,
+            cache: { initial_value: 4 },
+            from_flow: null,
+            from_node: null,
+            from_slot: null
+          }
+      ]
+    title: 章节爬取
+  - task: ../../blocks/typescript_lib_7b9627/block.oo.yaml
+    node_id: 96271188-bf38-47e2-a765-c025f818d9a0
+    inputs_from:
+      [
+        {
+            handle: path,
+            trigger: null,
+            cache: { initial_value: /oomol-storage/PDF/漫画PDF },
+            from_flow: null,
+            from_node: null,
+            from_slot: null
+          },
+        {
+            handle: title,
+            trigger: null,
+            cache: true,
+            from_flow: null,
+            from_node: [ { node_id: ee577637-751a-4824-aea9-3084af089159, output_handle: title } ],
+            from_slot: null
+          },
+        {
+            handle: imagePathes,
+            trigger: null,
+            cache: true,
+            from_flow: null,
+            from_node: [ { node_id: ee577637-751a-4824-aea9-3084af089159, output_handle: imagePaths } ],
+            from_slot: null
+          }
+      ]
+    title: 合成 PDF
+  - task: ../../blocks/typescript_lib_0fee57/block.oo.yaml
+    node_id: ee577637-751a-4824-aea9-3084af089159
+    inputs_from:
+      [
+        {
+            handle: page,
+            trigger: null,
+            cache: true,
+            from_flow: null,
+            from_node: [ { node_id: 78a6438d-062d-4aa1-a024-d7ad5ec38a0d, output_handle: page } ],
+            from_slot: null
+          },
+        {
+            handle: path,
+            trigger: null,
+            cache: { initial_value: /oomol-storage/PDF/漫画 },
+            from_flow: null,
+            from_node: null,
+            from_slot: null
+          }
+      ]
+    title: 下载图片
