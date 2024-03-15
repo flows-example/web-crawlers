@@ -1,9 +1,0 @@
-{
-  "name": "code-1",
-  "dependencies": {
-    "download": "^8.0.0"
-  },
-  "devDependencies": {
-    "@types/download": "^8.0.5"
-  }
-}
