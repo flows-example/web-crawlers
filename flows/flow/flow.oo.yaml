@@ -5,11 +5,8 @@ nodes:
       [
         {
             handle: capterURLs,
-            trigger: null,
-            cache: { initial_value: true },
-            from_flow: null,
             from_node: [ { node_id: 1a1acdf6-ce7e-4077-b5d8-0c33aa7dbfd2, output_handle: capterURLs } ],
-            from_slot: null
+            cache: true
           }
       ]
     title: 章节内容
@@ -76,6 +73,7 @@ nodes:
             from_flow: null,
             from_node: [ { node_id: 78a6438d-062d-4aa1-a024-d7ad5ec38a0d, output_handle: page } ],
             from_slot: null
-          }
+          },
+        { handle: path, cache: true }
       ]
     title: 下载图片
