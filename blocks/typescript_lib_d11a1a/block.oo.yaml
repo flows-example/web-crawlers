@@ -5,18 +5,24 @@ executor:
   entry: ./index.ts
 inputs_def:
   - handle: url
-    schema:
-      type: string
+    serialize:
+      serializer: json
+      json_schema:
+        type: string
   - handle: maxResponse
     optional: true
-    schema:
-      type: integer
-      minimum: 1
-      maximum: 200
-      "ui:step": 1
+    serialize:
+      serializer: json
+      json_schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        "ui:step": 1
 outputs_def:
   - handle: capterURLs
-    schema:
-      type: array
-      items:
-        type: string
+    serialize:
+      serializer: json
+      json_schema:
+        type: array
+        items:
+          type: string

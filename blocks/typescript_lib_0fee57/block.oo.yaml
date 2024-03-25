@@ -5,26 +5,35 @@ executor:
   entry: ./index.ts
 inputs_def:
   - handle: page
-    schema:
-      type: object
-      required: [imageURLs]
-      properties:
-        title:
-          type: string
-        imageURLs:
-          type: array
-          items:
+    optional: false
+    serialize:
+      serializer: json
+      json_schema:
+        type: object
+        required: [ imageURLs ]
+        properties:
+          title:
             type: string
+          imageURLs:
+            type: array
+            items:
+              type: string
   - handle: path
-    schema:
-      type: "string"
-      "ui:widget": "dir"
+    serialize:
+      serializer: json
+      json_schema:
+        type: "string"
+        "ui:widget": "dir"
 outputs_def:
   - handle: title
-    schema:
-      type: string
-  - handle: imagePaths
-    schema:
-      type: array
-      items:
+    serialize:
+      serializer: json
+      json_schema:
         type: string
+  - handle: imagePaths
+    serialize:
+      serializer: json
+      json_schema:
+        type: array
+        items:
+          type: string
