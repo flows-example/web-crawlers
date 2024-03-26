@@ -1,0 +1,39 @@
+type: task_block
+title: typescript_lib_0fee57
+executor:
+  name: node_executor
+  entry: ./index.ts
+inputs_def:
+  - handle: page
+    optional: false
+    serialize:
+      serializer: json
+      json_schema:
+        type: object
+        required: [ imageURLs ]
+        properties:
+          title:
+            type: string
+          imageURLs:
+            type: array
+            items:
+              type: string
+  - handle: path
+    serialize:
+      serializer: json
+      json_schema:
+        type: "string"
+        "ui:widget": "dir"
+outputs_def:
+  - handle: title
+    serialize:
+      serializer: json
+      json_schema:
+        type: string
+  - handle: imagePaths
+    serialize:
+      serializer: json
+      json_schema:
+        type: array
+        items:
+          type: string

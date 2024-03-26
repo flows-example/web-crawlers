@@ -1,5 +1,5 @@
 {
-  "name": "code-2",
+  "name":"typescript_lib_7b9627",
   "dependencies": {
     "image-size": "^1.0.2",
     "jspdf": "^2.5.1"

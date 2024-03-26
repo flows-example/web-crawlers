@@ -3,18 +3,16 @@ import {jsPDF} from "jspdf";
 import sizeOf from "image-size";
 import fs from "fs";
 
-type Props = {
+type Inputs = {
+  path: string;
   title: string;
   imagePathes: string[];
 }
 
-type Options = {
-  readonly path: string;
-};
-
-type Result = {
+type Outputs = {
   out: any;
 }
+
 const generatePdf = async (imageUrls: string[]): Promise<jsPDF> => {
   const doc = new jsPDF("p", "px", "a4");
   const width = doc.internal.pageSize.getWidth();
@@ -47,9 +45,9 @@ const generatePdf = async (imageUrls: string[]): Promise<jsPDF> => {
   }
   return doc;
 }
-export const main: VocanaMainFunction<Props, Result, Options> = async (props, context) => {
-  const pdf = await generatePdf(props.imagePathes);
-  const fileName = props.title;
-  pdf.save(`${context.options.path}/${fileName}.pdf`);
+export const main: VocanaMainFunction<Inputs, Outputs> = async (inputs, context) => {
+  const pdf = await generatePdf(inputs.imagePathes);
+  const fileName = inputs.title;
+  pdf.save(`${inputs.path}/${fileName}.pdf`);
   await context.done();
 };

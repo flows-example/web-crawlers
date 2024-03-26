@@ -1,0 +1,26 @@
+type: task_block
+title: typescript_lib_7b9627
+executor:
+  name: node_executor
+  entry: ./index.ts
+inputs_def:
+  - handle: title
+    serialize:
+      serializer: json
+      json_schema:
+        type: string
+  - handle: imagePathes
+    serialize:
+      serializer: json
+      json_schema:
+        type: array
+        items:
+          type: string
+  - handle: path
+    serialize:
+      serializer: json
+      json_schema:
+        type: "string"
+        "ui:widget": "dir"
+
+outputs_def: []

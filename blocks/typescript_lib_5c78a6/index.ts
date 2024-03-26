@@ -1,11 +1,11 @@
 import type { VocanaMainFunction, DefaultObject } from "@vocana/sdk";
 import { CheerioCrawler, Dataset } from "crawlee";
 
-type Props = {
+type Inputs = {
   capterURLs: string[];
 };
 
-type Result = {
+type Outputs = {
   page: Page;
 };
 
@@ -14,7 +14,7 @@ type Page = {
   imageURLs: string[];
 };
 
-export const main: VocanaMainFunction<Props, Result> = async (props, context) => {
+export const main: VocanaMainFunction<Inputs, Outputs> = async (inputs, context) => {
   const pages: Page[] = [];
   const crawler = new CheerioCrawler({
       // Use the requestHandler to process each of the crawled pages.
@@ -35,10 +35,10 @@ export const main: VocanaMainFunction<Props, Result> = async (props, context) =>
       // Let's limit our crawls to make our tests shorter and safer.
       maxRequestsPerCrawl: 50,
   });
-  await crawler.run(props.capterURLs);
+  await crawler.run(inputs.capterURLs);
 
   for (const page of pages) {
-    context.result(page, "page", false);
+    context.output(page, "page", false);
   }
   await context.done();
 };

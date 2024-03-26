@@ -1,0 +1,28 @@
+type: task_block
+title: typescript_lib_d11a1a
+executor:
+  name: node_executor
+  entry: ./index.ts
+inputs_def:
+  - handle: url
+    serialize:
+      serializer: json
+      json_schema:
+        type: string
+  - handle: maxResponse
+    optional: true
+    serialize:
+      serializer: json
+      json_schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        "ui:step": 1
+outputs_def:
+  - handle: capterURLs
+    serialize:
+      serializer: json
+      json_schema:
+        type: array
+        items:
+          type: string

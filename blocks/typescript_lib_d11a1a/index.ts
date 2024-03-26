@@ -1,18 +1,17 @@
 import type { VocanaMainFunction, DefaultObject } from "@vocana/sdk";
 import { CheerioCrawler, Dataset } from "crawlee";
 
-type Props = {}
-type Options = {
+type Inputs = {
   url: string;
   maxResponse?: number;
-};
+}
 
-type Result = {
+type Outputs = {
   capterURLs: string[];
 }
 
-export const main: VocanaMainFunction<Props, Result, Options> = async (props, context) => {
-  const url = context.options.url;
+export const main: VocanaMainFunction<Inputs, Outputs> = async (inputs, context) => {
+  const url = inputs.url;
   const capterURLs: string[] = [];
 
   let mangaTitle: string | undefined;
@@ -28,8 +27,8 @@ export const main: VocanaMainFunction<Props, Result, Options> = async (props, co
   });
   await crawler.run([url]);
 
-  if (typeof context.options.maxResponse === "number") {
-    capterURLs.splice(context.options.maxResponse);
+  if (typeof inputs.maxResponse === "number") {
+    capterURLs.splice(inputs.maxResponse);
   }
-  await context.result(capterURLs, "capterURLs", true);
+  await context.output(capterURLs, "capterURLs", true);
 };
